@@ -91,7 +91,7 @@ describe('Hangman Game', function () {
     it('addCorrectLetter should add letters to guessedLetter string', function () {
       hangman.secretWord = 'Ironhack';
       hangman.addCorrectLetter(1);
-      expect(hangman.guessedLetter).toEqual('R');
+      expect(hangman.guessedLetters).toEqual('R'); //added an "s" to guessedLetter S
     });
   });
 
@@ -137,12 +137,12 @@ describe('Hangman Game', function () {
     });
     it('checkWinner should return true if we guess all letters', function () {
       hangman.secretWord = 'IRONHACK';
-      hangman.guessedLetter = 'KHARCNIO';
+      hangman.guessedLetters = 'KHARCNIO'; //added an "s" to guessedLetter S
       expect(hangman.checkWinner()).toEqual(true);
     });
     it('checkWinner should return true if we guess all letters', function () {
       hangman.secretWord = 'IRONHACK';
-      hangman.guessedLetter = 'KHARCN';
+      hangman.guessedLetters = 'KHARCN'; //added an "s" to guessedLetter S
       expect(hangman.checkWinner()).toEqual(false);
     });
   });
