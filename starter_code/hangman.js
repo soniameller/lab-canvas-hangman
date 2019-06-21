@@ -1,7 +1,8 @@
 var hangman;
+var game;
 
 function Hangman() {
-  this.words = ["feliz", "cumpleaños", "cabeza", "de", "orinque"];
+  this.words = ["feliz", "cumple", "cabeza", "de", "orinque"];
   this.secretWord = "";
   this.letters = [];
   this.guessedLetters = "";
@@ -29,7 +30,6 @@ Hangman.prototype.checkClickedLetters = function(key) {
 Hangman.prototype.addCorrectLetter = function(i) {
 
   this.guessedLetters += this.secretWord.split("")[i].toUpperCase();
-
 };
 
 Hangman.prototype.addWrongLetter = function (letter) {
@@ -48,12 +48,23 @@ Hangman.prototype.checkWinner = function() {
   } else return false;
 };
 
+
+//-----------------------START GAME---------------------------
 document.getElementById("start-game-button").onclick = function() {
   hangman = new Hangman();
+  hangman.getWord()
+
+  game = new HangmanCanvas();
+  game.createBoard();
+  game.drawLines();
+  
+  console.log("New Hangman created")
 };
 
 document.onkeydown = function(e) {
+  game.writeCorrectLetter(e);
+  game.writeWrongLetter(e,/*errorsLeft*/);
+
   console.log(e.keyCode);
 };
 
-let mikiHangman = new Hangman

@@ -1,11 +1,14 @@
 .game-logo {
 
 }
+* {
+   background-color: #073349; /*#050f25; */
+}
 
 #start-game-button {
   border: 0;
   box-shadow: 0;
-  background: linear-gradient(to bottom, #9DA400, #BAC600);
+  background: linear-gradient(to bottom, #fb7e03,#fcb601);
   color: #fff;
   padding: 20px 40px;
   font-size: 30px;
@@ -14,4 +17,11 @@
 
 #hangman {
   text-align: center;
+}
+
+canvas {
+  border: 1px dashed rgb(0,0,0,0.2);
+  /* background-color: #203562; */
+  max-width: 95vw;
+  max-height: 95vh;
 }
