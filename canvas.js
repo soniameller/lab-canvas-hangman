@@ -16,13 +16,15 @@ function HangmanCanvas() {
   this.secretWord = hangman.secretWord; //Should be the secret word
   this.ctx.strokeStyle = "white";
   this.ctx.fillStyle = "white";
+  this.wrongX = 400;
+  this.wrongY = 200;
 }
 
 HangmanCanvas.prototype.createBoard = function() {
   this.ctx.clearRect(0, 0, this.width, this.height);
   // Image
   let img = new Image();
-  img.src = "/starter_code/images/584c1afe1fc21103bb375ba2.png";
+  img.src = "images/584c1afe1fc21103bb375ba2.png";
   img.onload = () => {
     this.ctx.drawImage(img, 100, -130, 200, 400);
   };
@@ -90,8 +92,7 @@ HangmanCanvas.prototype.writeCorrectLetter = function(e) {
 };
 
 // Change this variables to a place they work but that would refresh when there is a new word
-let wrongX = 400;
-let wrongY = 200;
+
 
 HangmanCanvas.prototype.writeWrongLetter = function(e, errorsLeft) {
   this.ctx.save();
@@ -104,9 +105,10 @@ HangmanCanvas.prototype.writeWrongLetter = function(e, errorsLeft) {
 
   if (hangman.checkClickedLetters(letter)) {
     if (!this.secretWord.includes(letter)) {
-      this.ctx.fillText(letter, wrongX, wrongY);
-      wrongX += 80;
-      console.log(wrongX);
+      hangman.addWrongLetter(letter)
+      this.ctx.fillText(letter, this.wrongX, this.wrongY);
+      this.wrongX += 80;
+      console.log(this.wrongX);
     }
   }
 
@@ -119,42 +121,42 @@ HangmanCanvas.prototype.drawHangman = function(/*shape */) {
 
   if (hangman.errorsLeft < 6) {
     let head = new Image();
-    head.src = "/starter_code/images/cabeza.png";
+    head.src = "images/cabeza.png";
     head.onload = () => {
       this.ctx.drawImage(head, x, y);
     };
   }
   if (hangman.errorsLeft < 5) {
     let body = new Image();
-    body.src = "/starter_code/images/torso.png";
+    body.src = "images/torso.png";
     body.onload = () => {
       this.ctx.drawImage(body, x, y);
     };
   }
   if (hangman.errorsLeft < 4) {
     let rightArm = new Image();
-    rightArm.src = "/starter_code/images/brazoDerecho.png";
+    rightArm.src = "images/brazoDerecho.png";
     rightArm.onload = () => {
       this.ctx.drawImage(rightArm, x, y);
     };
   }
   if (hangman.errorsLeft < 3) {
     let leftArm = new Image();
-    leftArm.src = "/starter_code/images/brazoIzquierdo.png";
+    leftArm.src = "images/brazoIzquierdo.png";
     leftArm.onload = () => {
       this.ctx.drawImage(leftArm, x, y);
     };
   }
   if (hangman.errorsLeft < 2) {
     let rightLeg = new Image();
-    rightLeg.src = "/starter_code/images/piernaDer.png";
+    rightLeg.src = "images/piernaDer.png";
     rightLeg.onload = () => {
       this.ctx.drawImage(rightLeg, x, y);
     };
   }
   if (hangman.errorsLeft < 1) {
     let leftLeg = new Image();
-    leftLeg.src = "/starter_code/images/PiernaIzquierda.png";
+    leftLeg.src = "images/PiernaIzquierda.png";
     leftLeg.onload = () => {
       this.ctx.drawImage(leftLeg, x, y);
     };

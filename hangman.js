@@ -67,8 +67,9 @@ document.onkeydown = function(e) {
     game.writeCorrectLetter(e);
     game.writeWrongLetter(e,/*errorsLeft*/);
     hangman.letters.push(String.fromCharCode(e.keyCode))
-  
+    
     console.log(e.keyCode);
   }
+  game.drawHangman()
 };
 
