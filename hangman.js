@@ -1,6 +1,8 @@
 var hangman;
 var game;
 
+let index = -1
+
 function Hangman() {
   this.words = ["FELIZ", "CUMPLE", "CABEZA", "DE", "ORINQUE"];
   this.secretWord = "";
@@ -10,9 +12,10 @@ function Hangman() {
 }
 
 Hangman.prototype.getWord = function() {
-  randomIndex = Math.floor(Math.random() * this.words.length);
-  this.secretWord =  this.words[randomIndex]; //Not in the test
-  return this.words[randomIndex];
+  // randomIndex = Math.floor(Math.random() * this.words.length);
+  index = (index+1) % this.words.length
+  this.secretWord =  this.words[index]; //Not in the test
+  return this.words[index];
 };
 
 Hangman.prototype.checkIfLetter = function(keyCode) {
@@ -71,5 +74,6 @@ document.onkeydown = function(e) {
     console.log(e.keyCode);
   }
   game.drawHangman()
+  game.gameOver();
 };
 

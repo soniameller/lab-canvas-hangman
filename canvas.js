@@ -60,39 +60,51 @@ HangmanCanvas.prototype.writeCorrectLetter = function(e) {
   if (hangman.checkClickedLetters(letter)) {
     for (let i = 0; i < this.secretWord.length; i++) {
       if (this.secretWord[i].includes(letter)) {
-        if (i === 0) this.ctx.fillText(letter, correctX, correctY);
-        else if (i === 1)
+        if (i === 0) {
+          this.ctx.fillText(letter, correctX, correctY);
+          hangman.guessedLetters += letter;
+        } else if (i === 1) {
           this.ctx.fillText(letter, correctX + xDifference, correctY);
-        else if (i === 2)
+          hangman.guessedLetters += letter;
+        } else if (i === 2) {
           this.ctx.fillText(letter, correctX + xDifference * i, correctY);
-        else if (i === 3)
+          hangman.guessedLetters += letter;
+        } else if (i === 3) {
           this.ctx.fillText(letter, correctX + xDifference * i, correctY);
-        else if (i === 4)
+          hangman.guessedLetters += letter;
+        } else if (i === 4) {
           this.ctx.fillText(letter, correctX + xDifference * i, correctY);
-        else if (i === 5)
+          hangman.guessedLetters += letter;
+        } else if (i === 5) {
           this.ctx.fillText(letter, correctX + xDifference * i, correctY);
-        else if (i === 6)
+          hangman.guessedLetters += letter;
+        } else if (i === 6) {
           this.ctx.fillText(letter, correctX + xDifference * i, correctY);
-        else if (i === 7)
+          hangman.guessedLetters += letter;
+        } else if (i === 7) {
           this.ctx.fillText(letter, correctX + xDifference * i, correctY);
-        else if (i === 8)
+          hangman.guessedLetters += letter;
+        } else if (i === 8) {
           this.ctx.fillText(letter, correctX + xDifference * i, correctY);
-        else if (i === 9)
+          hangman.guessedLetters += letter;
+        } else if (i === 9) {
           this.ctx.fillText(letter, correctX + xDifference * i, correctY);
-        else if (i === 10)
+          hangman.guessedLetters += letter;
+        } else if (i === 10) {
           this.ctx.fillText(letter, correctX + xDifference * i, correctY);
-        else if (i === 11)
+          hangman.guessedLetters += letter;
+        } else if (i === 11) {
           this.ctx.fillText(letter, correctX + xDifference * i, correctY);
-        else if (i === 12)
+          hangman.guessedLetters += letter;
+        } else if (i === 12) {
           this.ctx.fillText(letter, correctX + xDifference * i, correctY);
+          hangman.guessedLetters += letter;
+        }
       }
     }
   }
   this.ctx.restore();
 };
-
-// Change this variables to a place they work but that would refresh when there is a new word
-
 
 HangmanCanvas.prototype.writeWrongLetter = function(e, errorsLeft) {
   this.ctx.save();
@@ -105,7 +117,7 @@ HangmanCanvas.prototype.writeWrongLetter = function(e, errorsLeft) {
 
   if (hangman.checkClickedLetters(letter)) {
     if (!this.secretWord.includes(letter)) {
-      hangman.addWrongLetter(letter)
+      hangman.addWrongLetter(letter);
       this.ctx.fillText(letter, this.wrongX, this.wrongY);
       this.wrongX += 80;
       console.log(this.wrongX);
@@ -163,6 +175,11 @@ HangmanCanvas.prototype.drawHangman = function(/*shape */) {
   }
 };
 
-HangmanCanvas.prototype.gameOver = function() {};
+HangmanCanvas.prototype.gameOver = function() {
+  if (hangman.checkGameOver()) {
+    this.ctx.clearRect(0, 0, this.width, this.height);
+    this.ctx.fillText("Colgada de Urano ☄️", 300, 200);
+  }
+};
 
 HangmanCanvas.prototype.winner = function() {};
