@@ -1,7 +1,7 @@
 
 * {
   background-color: #073349; /*#050f25; */
-  background-image: url("/images/universe.jpeg");
+  background-image: url("../images/universe.jpeg");
   background-position-x: center;
 }
 
@@ -21,7 +21,7 @@
 
 canvas {
   border-top: 2px dashed rgb(255,255,255,0.2);
-  background-image: url("/images/universe.jpeg");
+  background-image: url("../images/universe.jpeg");
   background-size: 1300px 750px;
   background-position-x: center;
   max-width: 95vw;
