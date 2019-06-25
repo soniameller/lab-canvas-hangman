@@ -3,6 +3,23 @@ var game;
 
 let index = -1
 
+/* Get the documentElement (<html>) to display the page in fullscreen */
+var elem = document.documentElement;
+
+/* View in fullscreen */
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.mozRequestFullScreen) { /* Firefox */
+    elem.mozRequestFullScreen();
+  } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE/Edge */
+    elem.msRequestFullscreen();
+  }
+}
+
+
 function Hangman() {
   this.words = ["FELIZ", "CUMPLE", "CABEZA", "DE", "ORINQUE"];
   this.secretWord = "";
@@ -56,6 +73,8 @@ Hangman.prototype.checkWinner = function() {
 
 //-----------------------START GAME---------------------------
 document.getElementById("start-game-button").onclick = function() {
+
+  openFullscreen()
 
   hangman = new Hangman();
   hangman.getWord()
