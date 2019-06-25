@@ -1,8 +1,8 @@
-.game-logo {
 
-}
 * {
-   background-color: #073349; /*#050f25; */
+  background-color: #073349; /*#050f25; */
+  background-image: url("/images/universe.jpeg");
+  background-position-x: center;
 }
 
 #start-game-button {
@@ -20,8 +20,10 @@
 }
 
 canvas {
-  border: 1px dashed rgb(0,0,0,0.2);
-  /* background-color: #203562; */
+  border-top: 2px dashed rgb(255,255,255,0.2);
+  background-image: url("/images/universe.jpeg");
+  background-size: 1300px 750px;
+  background-position-x: center;
   max-width: 95vw;
   max-height: 95vh;
 }

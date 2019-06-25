@@ -33,7 +33,7 @@ HangmanCanvas.prototype.createBoard = function() {
 HangmanCanvas.prototype.drawLines = function() {
   this.ctx.save();
 
-  let startLineX = 300;
+  let startLineX = 400;
   let startLineY = 700;
   let lineWidth = 70;
   let lineSeparation = 20;
@@ -51,7 +51,7 @@ HangmanCanvas.prototype.drawLines = function() {
 HangmanCanvas.prototype.writeCorrectLetter = function(e) {
   this.ctx.save();
   let letter = String.fromCharCode(e.keyCode);
-  let correctX = 300;
+  let correctX = 400;
   let correctY = 690;
   let xDifference = 90;
 
@@ -167,19 +167,38 @@ HangmanCanvas.prototype.drawHangman = function(/*shape */) {
     };
   }
   if (hangman.errorsLeft < 1) {
+    //Draw urano
+    let urano = new Image();
+    urano.src = "images/planeta.png";
+    urano.onload = () => {
+      this.ctx.drawImage(urano, 20, 560,600,450);
+    };
+    //Draw mike
     let leftLeg = new Image();
     leftLeg.src = "images/PiernaIzquierda.png";
     leftLeg.onload = () => {
       this.ctx.drawImage(leftLeg, x, y);
     };
+    
   }
 };
 
 HangmanCanvas.prototype.gameOver = function() {
   if (hangman.checkGameOver()) {
     this.ctx.clearRect(0, 0, this.width, this.height);
-    this.ctx.fillText("Colgada de Urano ☄️", 300, 200);
+    this.ctx.fillText(`Colgada de Urano 💫`, 300, 200);
   }
 };
 
-HangmanCanvas.prototype.winner = function() {};
+HangmanCanvas.prototype.winner = function() {
+  if (hangman.secretWord=== "ORINQUE" && hangman.checkWinner()){
+    let planetaMiki = new Image();
+    planetaMiki.src = "images/planetamiki.png";
+    planetaMiki.onload = () => {
+      this.ctx.drawImage(planetaMiki, 20,0,500,500);
+    };
+    this.ctx.fillText(`Feliz cumpleanios cabeza de`, 5, 600);
+    console.log ("End of game")
+
+  }
+};

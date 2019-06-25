@@ -8,7 +8,7 @@ function Hangman() {
   this.secretWord = "";
   this.letters = [];
   this.guessedLetters = "";
-  this.errorsLeft = 6;
+  this.errorsLeft = 6; //This should be 6
 }
 
 Hangman.prototype.getWord = function() {
@@ -40,7 +40,10 @@ Hangman.prototype.addWrongLetter = function (letter) {
 };
 
 Hangman.prototype.checkGameOver = function() {
-  if (this.errorsLeft <= 0) return true;
+  if (this.errorsLeft <= 0) {
+    index -= 1;
+    return true;
+  }
   else return false;
 };
 
@@ -75,5 +78,6 @@ document.onkeydown = function(e) {
   }
   game.drawHangman()
   game.gameOver();
+  game.winner();
 };
 
